@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./app.css" rel="stylesheet">
+  <script src="./confetti.browser.min.js"></script>
+  <script type="module" src="./main.js"></script>
+  <title>AXSO 2026-1</title>
+</head>
+
+<body class="min-h-screen bg-neutral-950 text-gray-100 font-sans antialiased">
+  <header class="fixed inset-x-0 top-0 z-10 backdrop-blur-md bg-neutral-950/70 border-b border-white/5">
+    <div class="mx-auto max-w-6xl flex items-center justify-between px-4 py-3">
+      <img src="./logo_uoc.png" alt="UOC" class="w-56">
+      <span id="runtime" class="hidden sm:block text-xs text-gray-500"></span>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 pt-32 pb-16 flex flex-col gap-10">
+
+    <!-- Status -->
+    <section class="grid gap-4 lg:grid-cols-2 items-stretch">
+      <div class="flex flex-col justify-center gap-3">
+        <h1 class="text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 via-sky-400 to-blue-600 pb-2">
+          AXSO 2026-1
+        </h1>
+        <p class="text-xl text-teal-400">🥳 Congratulations ‼ the web server works!! 🎉</p>
+        <p class="text-sm text-gray-400">Rocky Linux · Caddy · Bun · MariaDB</p>
+      </div>
+
+      <div id="db-ok" class="hidden rounded-xl border-2 border-emerald-400/20 bg-neutral-900 p-5">
+        <p class="text-lg font-bold">Your database response is:</p>
+        <ul class="mt-3 flex flex-col gap-2 font-mono text-lg">
+          <li><span class="pr-2">👤</span><span id="student" class="text-emerald-300"></span></li>
+          <li><span class="pr-2">📅</span><span id="created" class="text-emerald-300"></span></li>
+          <li><span class="pr-2">📦</span><span id="total" class="text-emerald-300"></span></li>
+        </ul>
+      </div>
+
+      <div id="db-ko" class="hidden rounded-xl bg-pink-800 p-5 flex items-center text-gray-100 text-lg">
+        👉 Now you should configure the connection to the database.
+      </div>
+    </section>
+
+    <!-- Catalogue -->
+    <section id="catalogue" class="hidden flex-col gap-5">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <h2 class="text-3xl font-bold">Tech store catalogue</h2>
+        <label class="flex flex-col gap-1 text-sm text-gray-400">
+          Search products
+          <input id="search" type="search" placeholder="e.g. switch, SSD, laptop"
+            class="w-72 rounded-lg bg-neutral-900 border border-white/10 px-3 py-2 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-500">
+        </label>
+      </div>
+      <nav id="categories" class="flex flex-wrap gap-2" aria-label="Filter by category"></nav>
+      <div id="grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+      <p id="empty" class="hidden text-gray-400">No products match your search. Try another word or category.</p>
+    </section>
+  </main>
+
+  <footer class="text-center text-xs text-gray-600 pb-6">
+    Universitat Oberta de Catalunya · Administració de Xarxes i Sistemes Operatius
+  </footer>
+
+  <template id="product-card">
+    <article class="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-neutral-900">
+      <div data-cover class="relative h-32 flex items-center justify-center text-6xl">
+        <span data-icon></span>
+        <span data-category class="absolute top-3 right-3 rounded-full bg-black/40 px-3 py-1 text-xs text-white"></span>
+      </div>
+      <div class="flex flex-col gap-2 px-5 py-4 grow">
+        <h3 data-name class="text-lg font-semibold leading-snug"></h3>
+        <p data-description class="text-sm text-gray-400"></p>
+      </div>
+      <div class="flex items-center justify-between px-5 py-3 bg-neutral-800/60 text-sm">
+        <span data-price class="text-xl font-bold text-sky-300"></span>
+        <span class="flex flex-col items-end">
+          <span data-rating class="text-amber-300"></span>
+          <span data-stock class="text-xs text-gray-400"></span>
+        </span>
+      </div>
+    </article>
+  </template>
+</body>
+
+</html>

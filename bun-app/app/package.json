@@ -1,0 +1,21 @@
+{
+  "name": "uoc20261",
+  "version": "1.0.0",
+  "description": "Web page for practice AXSO 2026-1 (Bun + MariaDB)",
+  "type": "module",
+  "module": "server.ts",
+  "scripts": {
+    "start": "bun run server.ts",
+    "dev": "bun --watch run server.ts",
+    "build:css": "tailwindcss -i ./input.css -o ./public/app.css --minify"
+  },
+  "author": "UOC",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "3.24.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  }
+}
